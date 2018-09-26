@@ -1,0 +1,219 @@
+//$colors: black, white, red, orange, yellow, green, blue, purple, brown;
+
+@mixin flexCenter {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
+}
+@mixin control {
+	width: 300px;
+	height: 500px;
+	box-sizing: border-box;
+	border: 10px ridge hsla(277, 70%, 15%, 1);	
+	background: linear-gradient(70deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);//linear-gradient(240deg, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0) 100%);
+}
+@mixin controlShadow {
+	width: 310px;
+	height: 510px;
+    position: absolute;
+    filter: blur(5px);
+}
+@mixin colorForm {
+	content: "";
+	position: absolute;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	width: 21px;
+	height: 0;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	width: 100%;
+    height: 100vh;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 300px 900px 300px 1fr;
+    position: relative;
+    background: radial-gradient(#6085df, #452629);
+    //overflow: hidden;
+}
+
+/* MAIN SCREEN */
+.device {
+	@include flexCenter;
+	grid-column-start: 3;
+    grid-column-end: 3;
+	width:  900px;
+	height: 650px;
+	background-color: hsla(230, 15%, 60%, 1);
+	box-shadow: inset 0 0 30px 10px hsla(230, 15%, 20%, 0.5), 
+				inset 0 0 50px 35px hsla(230, 15%, 95%, 1), 
+				0 0 20px rgba(0, 0, 0, 0.3);
+	border-radius: 50px;
+	z-index: 10;
+}
+.devise_inner {
+	@include flexCenter;
+	width:  800px;
+	height: 550px;
+	position: relative;
+	background-color: hsla(277, 70%, 15%, 1);
+	clip-path: polygon(0 0, 25% 0, 30% 25px, 70% 25px, 75% 0, 100% 0, 100% 100%, 75% 100%, 70% 525px, 30% 525px, 25% 100%, 0 100%);
+	border-radius: 10px;
+	box-shadow: inset 0 0 20px 5px hsla(180, 100%, 100%, 0.3),
+				inset 0 0 3px 2px hsla(182, 100%, 51%, 0.7);
+}
+.devise_inner_helper_shadow {
+	position: absolute;
+	width: 47px;
+	height: 10px;
+
+	@each $helper, $top, $left, $rotate in (tleft, 10, 191, -148),
+									  	   (tright, 10, 560, 148),
+									  	   (bright, 530, 560, 32),
+										   (bleft, 530, 191, -32) {
+		&.#{$helper} {
+			top: #{$top}px;
+			left: #{$left}px;
+			transform: rotate(#{$rotate}deg);
+			box-shadow: inset 0 -5px 5px -3px hsla(182, 100%, 51%, 0.7);
+		}
+	}
+}
+.canvas {
+	width: fit-content;
+	background-color: #fff;
+	box-shadow: inset 0 0 5px 2px rgba(5, 247, 255, 0.7);
+}
+.canvas-row {
+	display: flex;
+}
+.canvas-dot{
+	width: 8px;
+	height: 8px;
+	display: inline-block;
+	border: 1px solid hsla(0, 0%, 20%, 0.7);
+}
+
+/* LEFT CONTROL PANEL */
+.left-control {
+	@include control;
+	grid-column-start: 2; 
+    grid-column-end: 2;
+    display: grid;
+    grid-template-columns: repeat(14, 1fr);
+    grid-template-rows: repeat(22, 1fr);
+    position: relative;
+    clip-path: polygon(40% 0%, 0% 20%, 0% 80%, 40% 100%, 100% 100%, 100% 0%);
+    border-right: none;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    filter: drop-shadow(1px 0px 1px hsla(182, 100%, 51%, 0.7));	
+    box-shadow: inset 5px 0 10px hsla(182, 100%, 10%, 0.3);
+}
+.left-control-shadow {
+	@include controlShadow;
+	grid-column-start: 2; 
+    grid-column-end: 2;
+    margin-left: -5px;
+}
+//41.4px x 43.6px
+.color_holder {
+	position: relative;
+	filter: drop-shadow(0 0 3px rgba(5, 247, 255, 0.3)) grayscale(20%);;
+	opacity: 0.8;
+
+	&::before {
+		@include colorForm;
+		top: 0;
+		left: 0;		
+	}
+	&::after {
+		@include colorForm;
+		bottom: 0;
+		left: 0;
+	}
+
+	&:hover {
+		filter: drop-shadow(0 0 3px rgba(5, 247, 255, 0.5)) grayscale(0%);
+		opacity: 1;
+	}
+}
+@each $color, $c_start, $r_start, $hsla in (black-div, 11, 3, hsla(0, 0%, 0%, 1)),
+										   (white-div, 8, 3, hsla(0, 100%, 100%, 1)),
+										   (red-div, 5, 5, hsla(0, 100%, 50%, 1)),
+										   (orange-div, 3, 8, hsla(30, 100%, 50%, 1)),
+										   (yellow-div, 3, 11, hsla(60, 100%, 50%, 1)),
+										   (green-div, 3, 14, hsla(140, 100%, 50%, 1)),
+										   (blue-div, 5, 17, hsla(200, 100%, 50%, 1)),
+										   (purple-div, 8, 19, hsla(270, 100%, 50%, 1)),
+										   (brown-div, 11, 19, hsla(16, 25%, 38%, 1)) {
+	.#{$color} {
+		grid-column-start: $c_start; 
+		grid-column-end: $c_start + 2;
+		grid-row-start: $r_start;
+		grid-row-end: $r_start + 2;
+		background: linear-gradient(to bottom, hsla(0, 0%, 0%, 0), hsla(0, 0%, 0%, 0) 9px, $hsla 10px, $hsla 33.6px, hsla(0, 0%, 0%, 0) 34px, hsla(0, 0%, 0%, 0));
+
+		&.#{$color}::before {
+			border-bottom: 10px solid $hsla;
+		}
+		&.#{$color}::after {
+			border-top: 10px solid $hsla;
+		}
+	}
+}
+
+.color-selector {
+	grid-column-start: 6; 
+	grid-column-end: 14;
+	grid-row-start: 9;
+	grid-row-end: 11;
+	font-family: Courier;
+    font-size: 18px;
+    color: #2c0b41;
+	text-align: center;
+	line-height: 21.8px;
+	border-radius: 20px;
+	border: 1px solid black;
+	box-shadow: 0 0 3px rgba(5, 247, 255, 0.5);
+	transition-duration: 0.5s;
+
+	&:hover {
+		text-shadow: 0 0 3px rgba(5, 247, 255, 0.5);
+	}
+}
+.users-div {
+	grid-column-start: 9; 
+	grid-column-end: 11;
+	grid-row-start: 13;
+	grid-row-end: 15;
+	border-radius: 50%;
+	border: 1px solid black;
+	pointer-events: none;
+	filter: drop-shadow(0 0 3px rgba(5, 247, 255, 0.5)) grayscale(0%);
+	opacity: 1;
+}
+
+/* RIGHT CONTROL PANEL */
+.right-control {
+	@include control;
+	grid-column-start: 4;
+    grid-column-end: 4;
+    clip-path: polygon(0% 0%, 60% 0%, 100% 20%, 100% 80%, 60% 100%, 0% 100%);
+    border-left: none;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    filter: drop-shadow(-1px 0px 1px hsla(182, 100%, 51%, 0.7));	
+    box-shadow: inset -5px 0 10px hsla(182, 100%, 10%, 0.3);
+}
+.right-control-shadow {
+	@include controlShadow;
+	grid-column-start: 4; 
+    grid-column-end: 4;
+}
