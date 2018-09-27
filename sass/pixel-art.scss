@@ -276,7 +276,7 @@ body {
     margin: 0 auto;    
     background: linear-gradient(to bottom, hsla(0, 0%, 0%, 0.2) 0%, hsla(0, 100%, 100%, 0.3) 50%,  hsla(0, 0%, 0%, 0.2) 100%);
     box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.5);
-    transition-duration: 1s;
+    transition-duration: 0.7s;
 
     &::before {
 		@include indicateClose;

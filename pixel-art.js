@@ -1,4 +1,5 @@
 let canvas = document.querySelector('.canvas');
+let dots = document.querySelectorAll('.canvas-dot');
 let colorHolders = document.querySelectorAll('.color_holder');
 let currentIndicators = document.querySelectorAll('.current_color');
 
@@ -31,9 +32,34 @@ for (color of colorHolders) {
 	})	
 }
 
+
 //a listener for colorize dot by click with using bubble
 canvas.addEventListener('click', function(elem) {
 	if(elem.target.classList.contains("canvas-dot")) {
 		elem.target.style.backgroundColor = currentColor;
 	}
 });
+
+
+//Bonus 1
+//Improve the mouse so it behaves like a real paintbrush. 
+//In other words, allow the user to paint by clicking and dragging across the canvas.
+
+canvas.addEventListener('mousedown', startDraw);
+canvas.addEventListener('mouseup', stopDraw);
+
+function startDraw() {	
+	for (dot of dots) {
+		dot.addEventListener('mouseenter', changeColor);
+	}
+}
+
+function stopDraw() {
+	for (dot of dots) {
+		dot.removeEventListener('mouseenter', changeColor);
+	}
+}
+
+function changeColor() {
+	this.style.backgroundColor = currentColor;
+}

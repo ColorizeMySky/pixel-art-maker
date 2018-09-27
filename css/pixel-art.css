@@ -470,7 +470,7 @@ body {
   margin: 0 auto;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(0, 0, 0, 0.2) 100%);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  transition-duration: 1s;
+  transition-duration: 0.7s;
 }
 /* line 281, ../sass/pixel-art.scss */
 .current_color::before {
