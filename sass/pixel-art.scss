@@ -9,6 +9,8 @@
 @mixin control {
 	width: 300px;
 	height: 500px;
+	grid-row-start: 3;
+	grid-row-end: 3;
 	box-sizing: border-box;
 	border: 10px ridge hsla(277, 70%, 15%, 1);	
 	background: linear-gradient(70deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
@@ -16,17 +18,51 @@
 @mixin controlShadow {
 	width: 310px;
 	height: 510px;
-    position: absolute;
+	grid-row-start: 3;
+	grid-row-end: 3;
     filter: blur(5px);
 }
 @mixin colorForm {
 	content: "";
 	position: absolute;
-	border-left: 10px solid transparent;
-	border-right: 10px solid transparent;
 	width: 21px;
 	height: 0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
 }
+@mixin indicateClose {
+	content: "";
+	position: absolute;
+	width: 60px;
+	height: 30px;	
+	background: radial-gradient(center, circle, rgba(255,255,255,.35), rgba(255,255,255,0) 20%, rgba(255,255,255,0) 21%),
+				linear-gradient(to bottom, hsla(230, 15%, 20%, 0.5) 0%, hsla(230, 15%, 95%, 0.7) 50%, hsla(230, 15%, 20%, 0.5) 100%);;
+	background-size: 10px 10px, 100% 100%;
+	background-position: 1px 1px, center center;
+	box-shadow: 0 0 7px 3px hsla(0, 0%, 0%, 0.3);
+	background-color: #8a8fa8;
+}
+
+@mixin animationTranslate($position, $side) {
+	@keyframes translateX#{$side} {
+    	from {
+			transform: translateX($position);
+    	}
+    	to {
+			transform: translateX(0);
+    	}
+	}
+
+	@keyframes translateY#{$side} {
+    	from {
+			transform: translateY($position);
+    	}
+    	to {
+			transform: translateY(0);
+    	}
+	}
+}
+
 
 * {
 	margin: 0;
@@ -38,9 +74,8 @@ body {
     display: grid;
     align-items: center;
     grid-template-columns: 1fr 300px 900px 300px 1fr;
-    position: relative;
+    grid-template-rows: 1fr 20px 650px 20px 1fr;
     background: radial-gradient(#6085df, #452629);
-    //overflow: hidden;
 }
 
 /* MAIN SCREEN */
@@ -48,6 +83,8 @@ body {
 	@include flexCenter;
 	grid-column-start: 3;
     grid-column-end: 3;
+    grid-row-start: 3;
+	grid-row-end: 3;
 	width:  900px;
 	height: 650px;
 	background-color: hsla(230, 15%, 60%, 1);
@@ -115,18 +152,23 @@ body {
     border-bottom-left-radius: 100px;
     filter: drop-shadow(1px 0px 1px hsla(182, 100%, 51%, 0.7));	
     box-shadow: inset 5px 0 10px hsla(182, 100%, 10%, 0.3);
+    @include animationTranslate(300px, left);
+    animation: translateXleft 1.5s ease-in;
 }
 .left-control-shadow {
 	@include controlShadow;
 	grid-column-start: 2; 
     grid-column-end: 2;
     margin-left: -5px;
+    @include animationTranslate(300px, left);
+    animation: translateXleft 1.5s ease-in;
 }
 //41.4px x 43.6px
 .color_holder {
 	position: relative;
 	filter: drop-shadow(0 0 3px rgba(5, 247, 255, 0.3)) grayscale(20%);;
 	opacity: 0.8;
+	cursor: pointer;
 
 	&::before {
 		@include colorForm;
@@ -182,6 +224,7 @@ body {
 	border-radius: 20px;
 	border: 1px solid black;
 	box-shadow: 0 0 3px rgba(5, 247, 255, 0.5);
+	cursor: pointer;
 	transition-duration: 0.5s;
 
 	&:hover {
@@ -211,9 +254,72 @@ body {
     border-bottom-right-radius: 100px;
     filter: drop-shadow(-1px 0px 1px hsla(182, 100%, 51%, 0.7));	
     box-shadow: inset -5px 0 10px hsla(182, 100%, 10%, 0.3);
+    @include animationTranslate(-300px, right);
+    animation: translateXright 1.5s ease-in;
 }
 .right-control-shadow {
 	@include controlShadow;
 	grid-column-start: 4; 
     grid-column-end: 4;
+    @include animationTranslate(-300px, right);
+    animation: translateXright 1.5s ease-in;
+}
+
+
+/* CURRENT COLOR INDICATORS */
+.current_color {
+	width: 400px;
+	height: 20px;
+	grid-column-start: 3;
+    grid-column-end: 3;
+    position: relative;
+    margin: 0 auto;    
+    background: linear-gradient(to bottom, hsla(0, 0%, 0%, 0.2) 0%, hsla(0, 100%, 100%, 0.3) 50%,  hsla(0, 0%, 0%, 0.2) 100%);
+    box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.5);
+    transition-duration: 1s;
+
+    &::before {
+		@include indicateClose;
+		left: 0;		
+	}
+	&::after {
+		@include indicateClose;
+		right: 0;
+	}
+}
+.color_top {
+	grid-row-start: 2;
+	grid-row-end: 2;
+	@include animationTranslate(35px, top);
+    animation: translateYtop 0.5s ease-in 1.5s backwards;
+
+	@mixin closeProperty {
+		bottom: 0;
+		border-top-left-radius: 5px;
+    	border-top-right-radius: 5px;
+	}
+	&::before {
+		@include closeProperty;		
+	}
+	&::after {
+		@include closeProperty;
+	}
+}
+.color_bottom {
+	grid-row-start: 4;
+	grid-row-end: 4;
+	@include animationTranslate(-35px, bottom);
+    animation: translateYbottom 0.5s ease-in 1.5s backwards;
+	
+	@mixin closeProperty {
+		top: 0;
+		border-bottom-left-radius: 5px;
+    	border-bottom-right-radius: 5px;
+	}
+	&::before {
+		@include closeProperty;	
+	}
+	&::after {
+		@include closeProperty;
+	}
 }
