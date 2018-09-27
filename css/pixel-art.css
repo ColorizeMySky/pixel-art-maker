@@ -322,17 +322,18 @@ body {
   border-top: 10px solid #795649;
 }
 
-/* line 172, ../sass/pixel-art.scss */
+/* line 171, ../sass/pixel-art.scss */
 .color-selector {
   grid-column-start: 6;
   grid-column-end: 14;
   grid-row-start: 9;
   grid-row-end: 11;
+  display: flex;
+  align-items: center;
   font-family: Courier;
   font-size: 18px;
   color: #2c0b41;
   text-align: center;
-  line-height: 21.8px;
   border-radius: 20px;
   border: 1px solid black;
   box-shadow: 0 0 3px rgba(5, 247, 255, 0.5);

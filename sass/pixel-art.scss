@@ -11,7 +11,7 @@
 	height: 500px;
 	box-sizing: border-box;
 	border: 10px ridge hsla(277, 70%, 15%, 1);	
-	background: linear-gradient(70deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);//linear-gradient(240deg, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0) 100%);
+	background: linear-gradient(70deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
 }
 @mixin controlShadow {
 	width: 310px;
@@ -168,17 +168,17 @@ body {
 		}
 	}
 }
-
 .color-selector {
 	grid-column-start: 6; 
 	grid-column-end: 14;
 	grid-row-start: 9;
 	grid-row-end: 11;
+	display: flex;
+	align-items: center;
 	font-family: Courier;
     font-size: 18px;
     color: #2c0b41;
 	text-align: center;
-	line-height: 21.8px;
 	border-radius: 20px;
 	border: 1px solid black;
 	box-shadow: 0 0 3px rgba(5, 247, 255, 0.5);
