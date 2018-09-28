@@ -17,18 +17,15 @@ let colorsReplace = {
 }
 let currentColor = 'white';
 
+let colorpicker = document.querySelector('#colorpicker');
+
 //a listener for change color from the palette
 for (color of colorHolders) {
 	color.addEventListener('click', function(){
 		let getColor = this.classList[color.classList.length - 1];	
 		getColor =  getColor.replace(/(\w+)-\w+/, '$1');
 		currentColor = 	colorsReplace[getColor];
-
-		//change color of indicators
-		for (indicator of currentIndicators) {
-			indicator.style.backgroundColor = currentColor;
-		}	
-		return currentColor;		
+		indicatorColor();
 	})	
 }
 
@@ -39,6 +36,13 @@ canvas.addEventListener('click', function(elem) {
 		elem.target.style.backgroundColor = currentColor;
 	}
 });
+
+//change color of indicators
+function indicatorColor() {
+	for (indicator of currentIndicators) {
+		indicator.style.backgroundColor = currentColor;
+	}	
+}
 
 
 //Bonus 1
@@ -62,4 +66,19 @@ function stopDraw() {
 
 function changeColor() {
 	this.style.backgroundColor = currentColor;
+}
+
+//Bonus 2
+//Add a color picker which allows the user to select any brush color
+colorpicker.addEventListener("change", selectNewColor);
+
+function selectNewColor() {
+	let userColor = colorpicker.value;
+	let userColorHolder = document.querySelector('.users-div');
+
+	userColorHolder.style.backgroundColor = userColor;
+	userColorHolder.addEventListener('click', function() {
+		currentColor = userColor;
+		indicatorColor();
+	});
 }
