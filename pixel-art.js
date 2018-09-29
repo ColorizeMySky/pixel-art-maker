@@ -2,6 +2,10 @@ let canvas = document.querySelector('.canvas');
 let dots = document.querySelectorAll('.canvas-dot');
 let colorHolders = document.querySelectorAll('.color_holder');
 let currentIndicators = document.querySelectorAll('.current_color');
+let colorpicker = document.querySelector('#colorpicker');
+let saveButton = document.querySelector('.save');
+let loadButton = document.querySelector('.load');
+let currentColor;
 
 //because in CSS the color made by using gradient and not the same of string color name
 let colorsReplace = {
@@ -15,9 +19,7 @@ let colorsReplace = {
 	'purple' : 'hsla(270, 100%, 50%, 1)',
 	'brown' : 'hsla(16, 25%, 38%, 1)'
 }
-let currentColor = 'white';
 
-let colorpicker = document.querySelector('#colorpicker');
 
 //a listener for change color from the palette
 for (color of colorHolders) {
@@ -32,7 +34,7 @@ for (color of colorHolders) {
 
 //a listener for colorize dot by click with using bubble
 canvas.addEventListener('click', function(elem) {
-	if(elem.target.classList.contains("canvas-dot")) {
+	if(elem.target.classList.contains('canvas-dot')) {
 		elem.target.style.backgroundColor = currentColor;
 	}
 });
@@ -68,9 +70,10 @@ function changeColor() {
 	this.style.backgroundColor = currentColor;
 }
 
+
 //Bonus 2
 //Add a color picker which allows the user to select any brush color
-colorpicker.addEventListener("change", selectNewColor);
+colorpicker.addEventListener('change', selectNewColor);
 
 function selectNewColor() {
 	let userColor = colorpicker.value;
@@ -82,3 +85,37 @@ function selectNewColor() {
 		indicatorColor();
 	});
 }
+
+
+//Bonus 3
+//Research LocalStorage and make a way to Save and Load a drawing. 
+//Research JSON.stringify and JSON.parse as a way to put the drawing into LocalStorage.
+saveButton.addEventListener('click', function() {
+	let picture = [];
+
+	for (dot of dots) {
+		picture.push(dot.style.backgroundColor);
+	}
+
+	localStorage.clear();
+	localStorage.setItem('picture', JSON.stringify(picture));
+});
+
+loadButton.addEventListener('click', function() {
+	let picture = JSON.parse(localStorage.getItem('picture'));
+	for (let i = 0; i <= picture.length - 1; i++) {
+		dots[i].style.backgroundColor = picture[i];
+	}
+});
+
+
+
+
+//Additional functional (the functions are in another file)
+let clearButton = document.querySelector('.clear');
+let defaultButton = document.querySelector('.default');
+
+setTimeout(drawDefault, 2000);
+
+clearButton.addEventListener('click', clearAll);
+defaultButton.addEventListener('click', drawDefault);

@@ -6,6 +6,12 @@
 	align-items: center;
 	box-sizing: border-box;
 }
+@mixin gridPosition ($cstart, $cend, $rstart, $rend){
+	grid-column-start: $cstart; 
+	grid-column-end: $cend;
+	grid-row-start: $rstart;
+	grid-row-end: $rend;
+}
 @mixin control {
 	width: 300px;
 	height: 500px;
@@ -14,6 +20,7 @@
 	box-sizing: border-box;
 	border: 10px ridge hsla(277, 70%, 15%, 1);	
 	background: linear-gradient(70deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+	user-select: none;
 }
 @mixin controlShadow {
 	width: 310px;
@@ -29,6 +36,19 @@
 	height: 0;
 	border-left: 10px solid transparent;
 	border-right: 10px solid transparent;
+}
+@mixin buttons {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: Courier;
+    font-size: 18px;
+    color: #2c0b41;
+	text-align: center;
+	border-radius: 20px;
+	border: 1px solid black;
+	box-shadow: 0 0 3px rgba(5, 247, 255, 0.5);
+	transition-duration: 0.5s;
 }
 @mixin indicateClose {
 	content: "";
@@ -81,10 +101,7 @@ body {
 /* MAIN SCREEN */
 .device {
 	@include flexCenter;
-	grid-column-start: 3;
-    grid-column-end: 3;
-    grid-row-start: 3;
-	grid-row-end: 3;
+	@include gridPosition (3, 3, 3, 3);
 	width:  900px;
 	height: 650px;
 	background-color: hsla(230, 15%, 60%, 1);
@@ -211,27 +228,11 @@ body {
 	}
 }
 .color-selector {
-	grid-column-start: 6; 
-	grid-column-end: 14;
-	grid-row-start: 9;
-	grid-row-end: 11;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-family: Courier;
-    font-size: 18px;
-    color: #2c0b41;
-	text-align: center;
-	border-radius: 20px;
-	border: 1px solid black;
-	box-shadow: 0 0 3px rgba(5, 247, 255, 0.5);
-	transition-duration: 0.5s;
+	@include buttons;
+	@include gridPosition (6, 14, 9, 11);
 }
 #colorpicker {
-	grid-column-start: 6; 
-	grid-column-end: 14;
-	grid-row-start: 9;
-	grid-row-end: 11;
+	@include gridPosition (6, 14, 9, 11);
 	width: 100%;
     height: 100%;
    	cursor: pointer;
@@ -242,10 +243,7 @@ body {
 	}
 }
 .users-div {
-	grid-column-start: 9; 
-	grid-column-end: 11;
-	grid-row-start: 13;
-	grid-row-end: 15;
+	@include gridPosition (9, 11, 13, 15);
 	border-radius: 50%;
 	border: 1px solid black;
 	cursor: pointer;
@@ -262,6 +260,9 @@ body {
 	@include control;
 	grid-column-start: 4;
     grid-column-end: 4;
+    display: grid;
+    grid-template-columns: repeat(14, 1fr);
+    grid-template-rows: repeat(16, 1fr);
     clip-path: polygon(0% 0%, 60% 0%, 100% 20%, 100% 80%, 60% 100%, 0% 100%);
     border-left: none;
     border-top-right-radius: 100px;
@@ -277,6 +278,29 @@ body {
     grid-column-end: 4;
     @include animationTranslate(-300px, right);
     animation: translateXright 1.5s ease-in;
+}
+.button {
+	@include buttons;
+	cursor: pointer;
+
+	&:hover {
+		text-shadow: 0 0 3px rgba(5, 247, 255, 0.5);
+	}
+}
+.save {
+	@include gridPosition(2, 10, 2, 4);
+}
+.load {
+	@include gridPosition(4, 12, 5, 7);
+}
+.brush {
+	@include gridPosition(6, 14, 8, 10);
+}
+.default {
+	@include gridPosition(4, 12, 11, 13);
+}
+.clear {
+	@include gridPosition(2, 10, 14, 16);
 }
 
 
@@ -305,7 +329,7 @@ body {
 	grid-row-start: 2;
 	grid-row-end: 2;
 	@include animationTranslate(35px, top);
-    animation: translateYtop 0.5s ease-in 1.5s backwards;
+    animation: translateYtop 0.5s ease-in 1s backwards;
 
 	@mixin closeProperty {
 		bottom: 0;
@@ -323,7 +347,7 @@ body {
 	grid-row-start: 4;
 	grid-row-end: 4;
 	@include animationTranslate(-35px, bottom);
-    animation: translateYbottom 0.5s ease-in 1.5s backwards;
+    animation: translateYbottom 0.5s ease-in 1s backwards;
 	
 	@mixin closeProperty {
 		top: 0;

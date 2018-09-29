@@ -1,10 +1,10 @@
-/* line 67, ../sass/pixel-art.scss */
+/* line 87, ../sass/pixel-art.scss */
 * {
   margin: 0;
   padding: 0;
 }
 
-/* line 71, ../sass/pixel-art.scss */
+/* line 91, ../sass/pixel-art.scss */
 body {
   width: 100%;
   height: 100vh;
@@ -16,7 +16,7 @@ body {
 }
 
 /* MAIN SCREEN */
-/* line 82, ../sass/pixel-art.scss */
+/* line 102, ../sass/pixel-art.scss */
 .device {
   display: flex;
   justify-content: center;
@@ -34,7 +34,7 @@ body {
   z-index: 10;
 }
 
-/* line 97, ../sass/pixel-art.scss */
+/* line 114, ../sass/pixel-art.scss */
 .devise_inner {
   display: flex;
   justify-content: center;
@@ -49,34 +49,34 @@ body {
   box-shadow: inset 0 0 20px 5px rgba(255, 255, 255, 0.3), inset 0 0 3px 2px rgba(5, 247, 255, 0.7);
 }
 
-/* line 108, ../sass/pixel-art.scss */
+/* line 125, ../sass/pixel-art.scss */
 .devise_inner_helper_shadow {
   position: absolute;
   width: 47px;
   height: 10px;
 }
-/* line 117, ../sass/pixel-art.scss */
+/* line 134, ../sass/pixel-art.scss */
 .devise_inner_helper_shadow.tleft {
   top: 10px;
   left: 191px;
   transform: rotate(-148deg);
   box-shadow: inset 0 -5px 5px -3px rgba(5, 247, 255, 0.7);
 }
-/* line 117, ../sass/pixel-art.scss */
+/* line 134, ../sass/pixel-art.scss */
 .devise_inner_helper_shadow.tright {
   top: 10px;
   left: 560px;
   transform: rotate(148deg);
   box-shadow: inset 0 -5px 5px -3px rgba(5, 247, 255, 0.7);
 }
-/* line 117, ../sass/pixel-art.scss */
+/* line 134, ../sass/pixel-art.scss */
 .devise_inner_helper_shadow.bright {
   top: 530px;
   left: 560px;
   transform: rotate(32deg);
   box-shadow: inset 0 -5px 5px -3px rgba(5, 247, 255, 0.7);
 }
-/* line 117, ../sass/pixel-art.scss */
+/* line 134, ../sass/pixel-art.scss */
 .devise_inner_helper_shadow.bleft {
   top: 530px;
   left: 191px;
@@ -84,19 +84,19 @@ body {
   box-shadow: inset 0 -5px 5px -3px rgba(5, 247, 255, 0.7);
 }
 
-/* line 125, ../sass/pixel-art.scss */
+/* line 142, ../sass/pixel-art.scss */
 .canvas {
   width: fit-content;
   background-color: #fff;
   box-shadow: inset 0 0 5px 2px rgba(5, 247, 255, 0.7);
 }
 
-/* line 130, ../sass/pixel-art.scss */
+/* line 147, ../sass/pixel-art.scss */
 .canvas-row {
   display: flex;
 }
 
-/* line 133, ../sass/pixel-art.scss */
+/* line 150, ../sass/pixel-art.scss */
 .canvas-dot {
   width: 8px;
   height: 8px;
@@ -105,7 +105,7 @@ body {
 }
 
 /* LEFT CONTROL PANEL */
-/* line 141, ../sass/pixel-art.scss */
+/* line 158, ../sass/pixel-art.scss */
 .left-control {
   width: 300px;
   height: 500px;
@@ -114,6 +114,7 @@ body {
   box-sizing: border-box;
   border: 10px ridge #2c0b41;
   background: linear-gradient(70deg, rgba(0, 0, 0, 0.1) 0%, transparent 100%);
+  user-select: none;
   grid-column-start: 2;
   grid-column-end: 2;
   display: grid;
@@ -144,7 +145,7 @@ body {
     transform: translateY(0);
   }
 }
-/* line 158, ../sass/pixel-art.scss */
+/* line 175, ../sass/pixel-art.scss */
 .left-control-shadow {
   width: 310px;
   height: 510px;
@@ -172,14 +173,14 @@ body {
     transform: translateY(0);
   }
 }
-/* line 167, ../sass/pixel-art.scss */
+/* line 184, ../sass/pixel-art.scss */
 .color_holder {
   position: relative;
   filter: drop-shadow(0 0 3px rgba(5, 247, 255, 0.3)) grayscale(20%);
   opacity: 0.8;
   cursor: pointer;
 }
-/* line 173, ../sass/pixel-art.scss */
+/* line 190, ../sass/pixel-art.scss */
 .color_holder::before {
   content: "";
   position: absolute;
@@ -190,7 +191,7 @@ body {
   top: 0;
   left: 0;
 }
-/* line 178, ../sass/pixel-art.scss */
+/* line 195, ../sass/pixel-art.scss */
 .color_holder::after {
   content: "";
   position: absolute;
@@ -201,13 +202,13 @@ body {
   bottom: 0;
   left: 0;
 }
-/* line 184, ../sass/pixel-art.scss */
+/* line 201, ../sass/pixel-art.scss */
 .color_holder:hover {
   filter: drop-shadow(0 0 3px rgba(5, 247, 255, 0.5)) grayscale(0%);
   opacity: 1;
 }
 
-/* line 198, ../sass/pixel-art.scss */
+/* line 215, ../sass/pixel-art.scss */
 .black-div {
   grid-column-start: 11;
   grid-column-end: 13;
@@ -215,16 +216,16 @@ body {
   grid-row-end: 5;
   background: linear-gradient(to bottom, transparent, transparent 9px, black 10px, black 33.6px, transparent 34px, transparent);
 }
-/* line 205, ../sass/pixel-art.scss */
+/* line 222, ../sass/pixel-art.scss */
 .black-div.black-div::before {
   border-bottom: 10px solid black;
 }
-/* line 208, ../sass/pixel-art.scss */
+/* line 225, ../sass/pixel-art.scss */
 .black-div.black-div::after {
   border-top: 10px solid black;
 }
 
-/* line 198, ../sass/pixel-art.scss */
+/* line 215, ../sass/pixel-art.scss */
 .white-div {
   grid-column-start: 8;
   grid-column-end: 10;
@@ -232,16 +233,16 @@ body {
   grid-row-end: 5;
   background: linear-gradient(to bottom, transparent, transparent 9px, white 10px, white 33.6px, transparent 34px, transparent);
 }
-/* line 205, ../sass/pixel-art.scss */
+/* line 222, ../sass/pixel-art.scss */
 .white-div.white-div::before {
   border-bottom: 10px solid white;
 }
-/* line 208, ../sass/pixel-art.scss */
+/* line 225, ../sass/pixel-art.scss */
 .white-div.white-div::after {
   border-top: 10px solid white;
 }
 
-/* line 198, ../sass/pixel-art.scss */
+/* line 215, ../sass/pixel-art.scss */
 .red-div {
   grid-column-start: 5;
   grid-column-end: 7;
@@ -249,16 +250,16 @@ body {
   grid-row-end: 7;
   background: linear-gradient(to bottom, transparent, transparent 9px, red 10px, red 33.6px, transparent 34px, transparent);
 }
-/* line 205, ../sass/pixel-art.scss */
+/* line 222, ../sass/pixel-art.scss */
 .red-div.red-div::before {
   border-bottom: 10px solid red;
 }
-/* line 208, ../sass/pixel-art.scss */
+/* line 225, ../sass/pixel-art.scss */
 .red-div.red-div::after {
   border-top: 10px solid red;
 }
 
-/* line 198, ../sass/pixel-art.scss */
+/* line 215, ../sass/pixel-art.scss */
 .orange-div {
   grid-column-start: 3;
   grid-column-end: 5;
@@ -266,16 +267,16 @@ body {
   grid-row-end: 10;
   background: linear-gradient(to bottom, transparent, transparent 9px, #ff8000 10px, #ff8000 33.6px, transparent 34px, transparent);
 }
-/* line 205, ../sass/pixel-art.scss */
+/* line 222, ../sass/pixel-art.scss */
 .orange-div.orange-div::before {
   border-bottom: 10px solid #ff8000;
 }
-/* line 208, ../sass/pixel-art.scss */
+/* line 225, ../sass/pixel-art.scss */
 .orange-div.orange-div::after {
   border-top: 10px solid #ff8000;
 }
 
-/* line 198, ../sass/pixel-art.scss */
+/* line 215, ../sass/pixel-art.scss */
 .yellow-div {
   grid-column-start: 3;
   grid-column-end: 5;
@@ -283,16 +284,16 @@ body {
   grid-row-end: 13;
   background: linear-gradient(to bottom, transparent, transparent 9px, yellow 10px, yellow 33.6px, transparent 34px, transparent);
 }
-/* line 205, ../sass/pixel-art.scss */
+/* line 222, ../sass/pixel-art.scss */
 .yellow-div.yellow-div::before {
   border-bottom: 10px solid yellow;
 }
-/* line 208, ../sass/pixel-art.scss */
+/* line 225, ../sass/pixel-art.scss */
 .yellow-div.yellow-div::after {
   border-top: 10px solid yellow;
 }
 
-/* line 198, ../sass/pixel-art.scss */
+/* line 215, ../sass/pixel-art.scss */
 .green-div {
   grid-column-start: 3;
   grid-column-end: 5;
@@ -300,16 +301,16 @@ body {
   grid-row-end: 16;
   background: linear-gradient(to bottom, transparent, transparent 9px, #00ff55 10px, #00ff55 33.6px, transparent 34px, transparent);
 }
-/* line 205, ../sass/pixel-art.scss */
+/* line 222, ../sass/pixel-art.scss */
 .green-div.green-div::before {
   border-bottom: 10px solid #00ff55;
 }
-/* line 208, ../sass/pixel-art.scss */
+/* line 225, ../sass/pixel-art.scss */
 .green-div.green-div::after {
   border-top: 10px solid #00ff55;
 }
 
-/* line 198, ../sass/pixel-art.scss */
+/* line 215, ../sass/pixel-art.scss */
 .blue-div {
   grid-column-start: 5;
   grid-column-end: 7;
@@ -317,16 +318,16 @@ body {
   grid-row-end: 19;
   background: linear-gradient(to bottom, transparent, transparent 9px, #00aaff 10px, #00aaff 33.6px, transparent 34px, transparent);
 }
-/* line 205, ../sass/pixel-art.scss */
+/* line 222, ../sass/pixel-art.scss */
 .blue-div.blue-div::before {
   border-bottom: 10px solid #00aaff;
 }
-/* line 208, ../sass/pixel-art.scss */
+/* line 225, ../sass/pixel-art.scss */
 .blue-div.blue-div::after {
   border-top: 10px solid #00aaff;
 }
 
-/* line 198, ../sass/pixel-art.scss */
+/* line 215, ../sass/pixel-art.scss */
 .purple-div {
   grid-column-start: 8;
   grid-column-end: 10;
@@ -334,16 +335,16 @@ body {
   grid-row-end: 21;
   background: linear-gradient(to bottom, transparent, transparent 9px, #8000ff 10px, #8000ff 33.6px, transparent 34px, transparent);
 }
-/* line 205, ../sass/pixel-art.scss */
+/* line 222, ../sass/pixel-art.scss */
 .purple-div.purple-div::before {
   border-bottom: 10px solid #8000ff;
 }
-/* line 208, ../sass/pixel-art.scss */
+/* line 225, ../sass/pixel-art.scss */
 .purple-div.purple-div::after {
   border-top: 10px solid #8000ff;
 }
 
-/* line 198, ../sass/pixel-art.scss */
+/* line 215, ../sass/pixel-art.scss */
 .brown-div {
   grid-column-start: 11;
   grid-column-end: 13;
@@ -351,21 +352,17 @@ body {
   grid-row-end: 21;
   background: linear-gradient(to bottom, transparent, transparent 9px, #795649 10px, #795649 33.6px, transparent 34px, transparent);
 }
-/* line 205, ../sass/pixel-art.scss */
+/* line 222, ../sass/pixel-art.scss */
 .brown-div.brown-div::before {
   border-bottom: 10px solid #795649;
 }
-/* line 208, ../sass/pixel-art.scss */
+/* line 225, ../sass/pixel-art.scss */
 .brown-div.brown-div::after {
   border-top: 10px solid #795649;
 }
 
-/* line 213, ../sass/pixel-art.scss */
+/* line 230, ../sass/pixel-art.scss */
 .color-selector {
-  grid-column-start: 6;
-  grid-column-end: 14;
-  grid-row-start: 9;
-  grid-row-end: 11;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -377,9 +374,13 @@ body {
   border: 1px solid black;
   box-shadow: 0 0 3px rgba(5, 247, 255, 0.5);
   transition-duration: 0.5s;
+  grid-column-start: 6;
+  grid-column-end: 14;
+  grid-row-start: 9;
+  grid-row-end: 11;
 }
 
-/* line 230, ../sass/pixel-art.scss */
+/* line 234, ../sass/pixel-art.scss */
 #colorpicker {
   grid-column-start: 6;
   grid-column-end: 14;
@@ -390,12 +391,12 @@ body {
   cursor: pointer;
   opacity: 0;
 }
-/* line 240, ../sass/pixel-art.scss */
+/* line 241, ../sass/pixel-art.scss */
 #colorpicker:hover + .color-selector {
   text-shadow: 0 0 3px rgba(5, 247, 255, 0.5);
 }
 
-/* line 244, ../sass/pixel-art.scss */
+/* line 245, ../sass/pixel-art.scss */
 .users-div {
   grid-column-start: 9;
   grid-column-end: 11;
@@ -407,13 +408,13 @@ body {
   filter: drop-shadow(0 0 3px rgba(5, 247, 255, 0.5)) grayscale(0%);
   opacity: 0.8;
 }
-/* line 255, ../sass/pixel-art.scss */
+/* line 253, ../sass/pixel-art.scss */
 .users-div:hover {
   opacity: 1;
 }
 
 /* RIGHT CONTROL PANEL */
-/* line 261, ../sass/pixel-art.scss */
+/* line 259, ../sass/pixel-art.scss */
 .right-control {
   width: 300px;
   height: 500px;
@@ -422,8 +423,12 @@ body {
   box-sizing: border-box;
   border: 10px ridge #2c0b41;
   background: linear-gradient(70deg, rgba(0, 0, 0, 0.1) 0%, transparent 100%);
+  user-select: none;
   grid-column-start: 4;
   grid-column-end: 4;
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  grid-template-rows: repeat(16, 1fr);
   clip-path: polygon(0% 0%, 60% 0%, 100% 20%, 100% 80%, 60% 100%, 0% 100%);
   border-left: none;
   border-top-right-radius: 100px;
@@ -448,7 +453,7 @@ body {
     transform: translateY(0);
   }
 }
-/* line 274, ../sass/pixel-art.scss */
+/* line 275, ../sass/pixel-art.scss */
 .right-control-shadow {
   width: 310px;
   height: 510px;
@@ -475,8 +480,68 @@ body {
     transform: translateY(0);
   }
 }
+/* line 282, ../sass/pixel-art.scss */
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Courier;
+  font-size: 18px;
+  color: #2c0b41;
+  text-align: center;
+  border-radius: 20px;
+  border: 1px solid black;
+  box-shadow: 0 0 3px rgba(5, 247, 255, 0.5);
+  transition-duration: 0.5s;
+  cursor: pointer;
+}
+/* line 286, ../sass/pixel-art.scss */
+.button:hover {
+  text-shadow: 0 0 3px rgba(5, 247, 255, 0.5);
+}
+
+/* line 290, ../sass/pixel-art.scss */
+.save {
+  grid-column-start: 2;
+  grid-column-end: 10;
+  grid-row-start: 2;
+  grid-row-end: 4;
+}
+
+/* line 293, ../sass/pixel-art.scss */
+.load {
+  grid-column-start: 4;
+  grid-column-end: 12;
+  grid-row-start: 5;
+  grid-row-end: 7;
+}
+
+/* line 296, ../sass/pixel-art.scss */
+.brush {
+  grid-column-start: 6;
+  grid-column-end: 14;
+  grid-row-start: 8;
+  grid-row-end: 10;
+}
+
+/* line 299, ../sass/pixel-art.scss */
+.default {
+  grid-column-start: 4;
+  grid-column-end: 12;
+  grid-row-start: 11;
+  grid-row-end: 13;
+}
+
+/* line 302, ../sass/pixel-art.scss */
+.clear {
+  grid-column-start: 2;
+  grid-column-end: 10;
+  grid-row-start: 14;
+  grid-row-end: 16;
+}
+
 /* CURRENT COLOR INDICATORS */
-/* line 284, ../sass/pixel-art.scss */
+/* line 308, ../sass/pixel-art.scss */
 .current_color {
   width: 400px;
   height: 20px;
@@ -488,7 +553,7 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   transition-duration: 0.7s;
 }
-/* line 295, ../sass/pixel-art.scss */
+/* line 319, ../sass/pixel-art.scss */
 .current_color::before {
   content: "";
   position: absolute;
@@ -501,7 +566,7 @@ body {
   background-color: #8a8fa8;
   left: 0;
 }
-/* line 299, ../sass/pixel-art.scss */
+/* line 323, ../sass/pixel-art.scss */
 .current_color::after {
   content: "";
   position: absolute;
@@ -515,11 +580,11 @@ body {
   right: 0;
 }
 
-/* line 304, ../sass/pixel-art.scss */
+/* line 328, ../sass/pixel-art.scss */
 .color_top {
   grid-row-start: 2;
   grid-row-end: 2;
-  animation: translateYtop 0.5s ease-in 1.5s backwards;
+  animation: translateYtop 0.5s ease-in 1s backwards;
 }
 @keyframes translateXtop {
   from {
@@ -537,24 +602,24 @@ body {
     transform: translateY(0);
   }
 }
-/* line 315, ../sass/pixel-art.scss */
+/* line 339, ../sass/pixel-art.scss */
 .color_top::before {
   bottom: 0;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
-/* line 318, ../sass/pixel-art.scss */
+/* line 342, ../sass/pixel-art.scss */
 .color_top::after {
   bottom: 0;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
 
-/* line 322, ../sass/pixel-art.scss */
+/* line 346, ../sass/pixel-art.scss */
 .color_bottom {
   grid-row-start: 4;
   grid-row-end: 4;
-  animation: translateYbottom 0.5s ease-in 1.5s backwards;
+  animation: translateYbottom 0.5s ease-in 1s backwards;
 }
 @keyframes translateXbottom {
   from {
@@ -572,13 +637,13 @@ body {
     transform: translateY(0);
   }
 }
-/* line 333, ../sass/pixel-art.scss */
+/* line 357, ../sass/pixel-art.scss */
 .color_bottom::before {
   top: 0;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-/* line 336, ../sass/pixel-art.scss */
+/* line 360, ../sass/pixel-art.scss */
 .color_bottom::after {
   top: 0;
   border-bottom-left-radius: 5px;
