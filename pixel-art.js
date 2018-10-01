@@ -5,6 +5,7 @@ let currentIndicators = document.querySelectorAll('.current_color');
 let colorpicker = document.querySelector('#colorpicker');
 let saveButton = document.querySelector('.save');
 let loadButton = document.querySelector('.load');
+let brushButton = document.querySelector('.brush');
 let currentColor;
 
 //because in CSS the color made by using gradient and not the same of string color name
@@ -31,13 +32,14 @@ for (color of colorHolders) {
 	})	
 }
 
-
 //a listener for colorize dot by click with using bubble
-canvas.addEventListener('click', function(elem) {
+canvas.addEventListener('click', colorByPixel);
+
+function colorByPixel(elem) {
 	if(elem.target.classList.contains('canvas-dot')) {
 		elem.target.style.backgroundColor = currentColor;
 	}
-});
+}
 
 //change color of indicators
 function indicatorColor() {
@@ -103,19 +105,42 @@ saveButton.addEventListener('click', function() {
 
 loadButton.addEventListener('click', function() {
 	let picture = JSON.parse(localStorage.getItem('picture'));
+
 	for (let i = 0; i <= picture.length - 1; i++) {
 		dots[i].style.backgroundColor = picture[i];
 	}
 });
 
 
+//Bonus 4
+//Create a fill tool that will flood fill boundaries with a chosen paint color.
+brushButton.addEventListener('click', function() {
+	brushButton.classList.toggle('fill');
+
+	if (brushButton.classList.contains('fill')) {
+		brushButton.textContent = 'Fill';
+		canvas.removeEventListener('click', colorByPixel);
+		canvas.removeEventListener('mousedown', startDraw);
+		canvas.removeEventListener('mouseup', stopDraw);
+		canvas.addEventListener('click', floodFill);
+	}
+	else {
+		brushButton.textContent = 'Brush';
+		canvas.removeEventListener('click', floodFill);
+		canvas.addEventListener('click', colorByPixel);
+		canvas.addEventListener('mousedown', startDraw);
+		canvas.addEventListener('mouseup', stopDraw);
+	}	
+});
 
 
 //Additional functional (the functions are in another file)
 let clearButton = document.querySelector('.clear');
 let defaultButton = document.querySelector('.default');
 
-setTimeout(drawDefault, 2000);
+window.addEventListener("load", function() {
+	setTimeout(drawDefault, 2000);
+});
 
 clearButton.addEventListener('click', clearAll);
 defaultButton.addEventListener('click', drawDefault);

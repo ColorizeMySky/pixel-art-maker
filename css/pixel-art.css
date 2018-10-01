@@ -522,9 +522,36 @@ body {
   grid-column-end: 14;
   grid-row-start: 8;
   grid-row-end: 10;
+  position: relative;
+  justify-content: flex-end;
+  padding-right: 20px;
+  transition-duration: 0s;
+}
+/* line 303, ../sass/pixel-art.scss */
+.brush::before {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  left: 5px;
+  background-color: rgba(5, 247, 255, 0.1);
+  border: 1px solid black;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(5, 247, 255, 0.5);
+}
+/* line 315, ../sass/pixel-art.scss */
+.brush.fill {
+  padding-right: 0;
+  padding-left: 20px;
+  justify-content: flex-start;
+}
+/* line 320, ../sass/pixel-art.scss */
+.brush.fill::before {
+  right: 5px;
+  left: auto;
 }
 
-/* line 299, ../sass/pixel-art.scss */
+/* line 326, ../sass/pixel-art.scss */
 .default {
   grid-column-start: 4;
   grid-column-end: 12;
@@ -532,7 +559,7 @@ body {
   grid-row-end: 13;
 }
 
-/* line 302, ../sass/pixel-art.scss */
+/* line 329, ../sass/pixel-art.scss */
 .clear {
   grid-column-start: 2;
   grid-column-end: 10;
@@ -541,7 +568,7 @@ body {
 }
 
 /* CURRENT COLOR INDICATORS */
-/* line 308, ../sass/pixel-art.scss */
+/* line 335, ../sass/pixel-art.scss */
 .current_color {
   width: 400px;
   height: 20px;
@@ -553,7 +580,7 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   transition-duration: 0.7s;
 }
-/* line 319, ../sass/pixel-art.scss */
+/* line 346, ../sass/pixel-art.scss */
 .current_color::before {
   content: "";
   position: absolute;
@@ -566,7 +593,7 @@ body {
   background-color: #8a8fa8;
   left: 0;
 }
-/* line 323, ../sass/pixel-art.scss */
+/* line 350, ../sass/pixel-art.scss */
 .current_color::after {
   content: "";
   position: absolute;
@@ -580,7 +607,7 @@ body {
   right: 0;
 }
 
-/* line 328, ../sass/pixel-art.scss */
+/* line 355, ../sass/pixel-art.scss */
 .color_top {
   grid-row-start: 2;
   grid-row-end: 2;
@@ -602,20 +629,20 @@ body {
     transform: translateY(0);
   }
 }
-/* line 339, ../sass/pixel-art.scss */
+/* line 366, ../sass/pixel-art.scss */
 .color_top::before {
   bottom: 0;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
-/* line 342, ../sass/pixel-art.scss */
+/* line 369, ../sass/pixel-art.scss */
 .color_top::after {
   bottom: 0;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
 
-/* line 346, ../sass/pixel-art.scss */
+/* line 373, ../sass/pixel-art.scss */
 .color_bottom {
   grid-row-start: 4;
   grid-row-end: 4;
@@ -637,13 +664,13 @@ body {
     transform: translateY(0);
   }
 }
-/* line 357, ../sass/pixel-art.scss */
+/* line 384, ../sass/pixel-art.scss */
 .color_bottom::before {
   top: 0;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-/* line 360, ../sass/pixel-art.scss */
+/* line 387, ../sass/pixel-art.scss */
 .color_bottom::after {
   top: 0;
   border-bottom-left-radius: 5px;

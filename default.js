@@ -29,7 +29,9 @@ let arrBlack = [ //lenght, start position
 			[1, 3312], [1, 3334], [2, 3345], [2, 3354],	[1, 3385], [1, 3387], [1, 3409], [1, 3419], [2, 3427], [1, 3460],
 			[1, 3462], [1, 3484], [2, 3500], [1, 3535], [1, 3537], [1, 3559], [1, 3566], [1, 3574],	[2, 3611], [1, 3633],
 			[2, 3635], [1, 3640], [1, 3648], [3, 3687], [1, 3707], [3, 3712], [2, 3721]
-			]
+			];
+let blueColor = '#2c4774';//#1a2d67';
+let beigeColor = '#ecc47e';//'#e9c287';
 
 //range = Array.from(new Array(16),(val,index)=>index + 17);
 //blackDots = blackDots.concat(range);
@@ -47,6 +49,8 @@ function drawDefault() {
 			dots[i].style.backgroundColor = '#000';
 		}
 	}
+
+	colorDefault();
 }
 
 function clearAll() {
@@ -54,4 +58,28 @@ function clearAll() {
 	for (dot of dots) {
 		dot.style.backgroundColor = null;
 	}
+}
+
+function colorDefault() {
+	if (!brushButton.classList.contains('fill')) {
+		brushButton.click();
+	}
+	let savedColor = currentColor;
+	currentColor = blueColor;
+	dots[3675].click();
+	dots[3690].click();
+
+	currentColor = beigeColor;
+	dots[915].click();
+	dots[933].click();
+	dots[1668].click();
+	dots[1828].click();
+	dots[2267].click();
+	dots[3708].click();
+	dots[3716].click();
+
+	brushButton.click();
+	dots[1066].click();
+
+	currentColor = savedColor;
 }
