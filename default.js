@@ -30,11 +30,9 @@ let arrBlack = [ //lenght, start position
 			[1, 3462], [1, 3484], [2, 3500], [1, 3535], [1, 3537], [1, 3559], [1, 3566], [1, 3574],	[2, 3611], [1, 3633],
 			[2, 3635], [1, 3640], [1, 3648], [3, 3687], [1, 3707], [3, 3712], [2, 3721]
 			];
-let blueColor = '#2c4774';//#1a2d67';
-let beigeColor = '#ecc47e';//'#e9c287';
+let blueColor = '#2c4774';
+let beigeColor = '#ecc47e';
 
-//range = Array.from(new Array(16),(val,index)=>index + 17);
-//blackDots = blackDots.concat(range);
 for (let i = 0; i <= arrBlack.length - 1; i++) {
 	range = Array.from(new Array(arrBlack[i][0]),(val,index)=>index + arrBlack[i][1]);
 	blackDots = blackDots.concat(range);
@@ -65,6 +63,7 @@ function colorDefault() {
 		brushButton.click();
 	}
 	let savedColor = currentColor;
+	
 	currentColor = blueColor;
 	dots[3675].click();
 	dots[3690].click();

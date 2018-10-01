@@ -101,15 +101,20 @@ saveButton.addEventListener('click', function() {
 
 	localStorage.clear();
 	localStorage.setItem('picture', JSON.stringify(picture));
+
+	showNotice();
+	setTimeout(loadLocalStorage, 1000);
 });
 
-loadButton.addEventListener('click', function() {
+loadButton.addEventListener('click', loadLocalStorage);
+
+function loadLocalStorage() {
 	let picture = JSON.parse(localStorage.getItem('picture'));
 
 	for (let i = 0; i <= picture.length - 1; i++) {
 		dots[i].style.backgroundColor = picture[i];
 	}
-});
+}
 
 
 //Bonus 4
@@ -144,3 +149,13 @@ window.addEventListener("load", function() {
 
 clearButton.addEventListener('click', clearAll);
 defaultButton.addEventListener('click', drawDefault);
+
+
+//Add notice 'Saved' (variable in another file)
+function showNotice() {
+	clearAll();
+
+	for (let i = 0; i <= noticeMessage.length - 1; i++) {
+		dots[i].style.backgroundColor = noticeMessage[i];
+	}
+}
