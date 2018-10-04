@@ -1,40 +1,13 @@
 function floodFill(elem){
 	let oldColor = elem.target.style.backgroundColor;
+	let indicatorsColor = document.querySelector('.current_color').style.backgroundColor;
 	let checkDots = [];
 	document.body.classList.add('unclickable');
 
 	//Fix for filling the same color
-	if (elem.target.style.backgroundColor != '') {
-		//a bit of copipaste ^^
-		function rgb2hex(rgb) {
-		    rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
-			    function hex(x) {
-			        return ("0" + parseInt(x).toString(16)).slice(-2);
-			    }
-		    return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
-		}
-		//
-
-		let compareColor = rgb2hex(oldColor);
-
-		if (compareColor == currentColor) {
-			let partBlue = currentColor[5] + currentColor[6] + '';
-
-			if (parseInt(partBlue, 16) < 255) {
-				partBlue = parseInt(partBlue, 16) + 1;				
-				partBlue = partBlue.toString(16);
-			}
-			else {
-				partBlue = parseInt(partBlue, 16) - 1;
-				partBlue = partBlue.toString(16);
-			}
-
-			if(partBlue.length < 2) {
-				partBlue = '0' + partBlue;
-			}
-
-			currentColor = currentColor.substr(0, 5) + partBlue;
-		}
+	if (oldColor == indicatorsColor && oldColor != '' || currentColor == undefined) {
+		document.body.classList.remove('unclickable');
+		return false;
 	}
 	//end: Fix for filling the same color
 
