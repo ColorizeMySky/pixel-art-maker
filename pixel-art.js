@@ -9,16 +9,17 @@ let brushButton = document.querySelector('.brush');
 let currentColor;
 
 //because in CSS the color made by using gradient and not the same of string color name
+//Should use hex-format for avoid a bug with fill the same color
 let colorsReplace = {
-	'black' : 'hsla(0, 0%, 0%, 1)',
-	'white' : 'hsla(0, 100%, 100%, 1)',
-	'red' : 'hsla(0, 100%, 50%, 1)',
-	'orange' : 'hsla(30, 100%, 50%, 1)',
-	'yellow' : 'hsla(60, 100%, 50%, 1)',
-	'green' : 'hsla(140, 100%, 50%, 1)',
-	'blue' : 'hsla(200, 100%, 50%, 1)',
-	'purple' : 'hsla(270, 100%, 50%, 1)',
-	'brown' : 'hsla(16, 25%, 38%, 1)'
+	'black' : '#000000',
+	'white' : '#ffffff',
+	'red' : '#ff0000',
+	'orange' : '#ff8000',
+	'yellow' : '#ffff00',
+	'green' : '#00ff55',
+	'blue' : '#00aaff',
+	'purple' : '#8000ff',
+	'brown' : '#805649'
 }
 
 
